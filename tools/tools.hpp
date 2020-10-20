@@ -77,6 +77,7 @@ typedef priority_queue<Label*,std::vector<Label*>,MyComparator> PriorityQueue;
 typedef priority_queue<Label*,std::vector<Label*>,AstarComparator> PriorityQueueAS;
 
 pair<Path,vector<int>> dijkstra_path_and_bounds(RoadNetwork *rN, NodeID source, NodeID target);
+int dijkstra_dist_del(RoadNetwork *rN, NodeID source, NodeID target);
 Path astar_limited(RoadNetwork *rN, NodeID source, NodeID target, vector<int> &bounds, unordered_set<Edge, boost::hash<Edge>> &deletedEdges);
 
 #endif

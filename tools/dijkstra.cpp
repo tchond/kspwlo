@@ -70,3 +70,54 @@ pair<Path,vector<int>> dijkstra_path_and_bounds(RoadNetwork *rN, NodeID source, 
     
     return make_pair(resPath, distances);
 }
+
+int dijkstra_dist_del(RoadNetwork *rN, NodeID source, NodeID target) {
+    PriorityQueue queue;
+    int newLength = 0;
+    int resDist = -1;
+    EdgeList::iterator iterAdj;
+    vector<int> distances(rN->numNodes, INT_MAX);
+    vector<bool> visited(rN->numNodes);
+    Label *targetLabel=NULL;
+    distances[target]=0;
+    vector<Label*> allCreatedLabels;
+    Label* srcLabel = new Label(target, newLength);
+    queue.push(srcLabel);
+    allCreatedLabels.push_back(srcLabel);
+    
+    while (!queue.empty()) {
+        Label* curLabel = queue.top();
+        queue.pop();
+        
+        if (visited[curLabel->node_id])
+            continue;
+        
+        visited[curLabel->node_id] = true;
+        distances[curLabel->node_id] = curLabel->length;
+        
+        if (curLabel->node_id == source) { // Destination has been found
+        	targetLabel = curLabel;
+            resDist = curLabel->length;
+            break;
+        }
+        
+        else { // Expand search
+            // For each incoming edge.
+            for (iterAdj = rN->adjListInc[curLabel->node_id].begin(); iterAdj != rN->adjListInc[curLabel->node_id].end(); iterAdj++) {
+                if((source == curLabel->node_id && target == iterAdj->first) || (target == curLabel->node_id && source == iterAdj->first))
+                	continue;
+                newLength = curLabel->length + iterAdj->second;
+                Label* newPrevious = curLabel;
+                if (distances[iterAdj->first] > newLength) {
+                	Label* label = new Label(iterAdj->first, newLength, newPrevious);
+                	allCreatedLabels.push_back(label);
+                    queue.push(label);
+                }
+            }
+        }
+    }
+    for(unsigned int i=0;i<allCreatedLabels.size();i++)
+    	delete allCreatedLabels[i];
+    
+    return resDist;
+}

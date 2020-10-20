@@ -7,7 +7,12 @@ Copyright (c) 2017 Theodoros Chondrogiannis
 typedef priority_queue<pair<int,Edge>> PathEdges;
 
 int compute_priority(RoadNetwork *rN, Edge &e, vector<int> &bounds, unordered_set<Edge,boost::hash<Edge>> &deletedEdges);
-
+int compute_priority_maxpt(RoadNetwork *rN, Edge &e, vector<int> &bounds, unordered_set<Edge,boost::hash<Edge>> &deletedEdges);
+int compute_priority_minpt(RoadNetwork *rN, Edge &e, vector<int> &bounds, unordered_set<Edge,boost::hash<Edge>> &deletedEdges);
+int compute_priority_maxw(RoadNetwork *rN, Edge &e);
+int compute_priority_minw(RoadNetwork *rN, Edge &e);
+int compute_priority_maxstr(RoadNetwork *rN, Edge &e);
+int compute_priority_minstr(RoadNetwork *rN, Edge &e);
 /*
  *
  *	esx(RoadNetwork, NodeID, NodeID, vector<int>, unordered_set<Edge,boost::hash<Edge>>)
@@ -167,4 +172,53 @@ int compute_paths_through(RoadNetwork *rN, Edge &e, vector<int> &bounds, unorder
 
 int compute_priority(RoadNetwork *rN, Edge &e, vector<int> &bounds, unordered_set<Edge,boost::hash<Edge>> &deletedEdges) {
 	return compute_paths_through(rN,e,bounds,deletedEdges); // Paths through
+}
+
+/*
+	The following functions implement the different strategies for identifying the next edge to be removed.
+*/
+
+int compute_priority_maxpt(RoadNetwork *rN, Edge &e, vector<int> &bounds, unordered_set<Edge,boost::hash<Edge>> &deletedEdges) {
+	int strength2 = 0;
+	EdgeList::iterator iterAdj;
+	vector<NodeID> sources, targets;
+	for (iterAdj = rN->adjListInc[e.first].begin(); iterAdj != rN->adjListInc[e.first].end(); iterAdj++) {
+		if(iterAdj->first != e.second)
+			sources.push_back(iterAdj->first);
+	}
+	for (iterAdj = rN->adjListOut[e.second].begin(); iterAdj != rN->adjListOut[e.second].end(); iterAdj++) {
+		if(iterAdj->first != e.first)	
+			targets.push_back(iterAdj->first);
+	}
+	for(unsigned int m=0;m<sources.size();m++) {
+		for(unsigned int n=0;n<targets.size();n++) {
+			Path tempP = astar_limited(rN,sources[m],targets[n],bounds,deletedEdges);
+			if(tempP.nodes.size() > 0 && tempP.containsEdge(e))
+				strength2++;
+			}
+	}
+	
+	return strength2;
+}
+
+int compute_priority_minpt(RoadNetwork *rN, Edge &e, vector<int> &bounds, unordered_set<Edge,boost::hash<Edge>> &deletedEdges) {
+	return INT_MAX-compute_priority_maxpt(rN,e,bounds,deletedEdges);
+}
+
+int compute_priority_maxw(RoadNetwork *rN, Edge &e) {
+	return rN->getEdgeWeight(e.first,e.second); // Paths through
+}
+
+int compute_priority_minw(RoadNetwork *rN, Edge &e) {
+	return INT_MAX-rN->getEdgeWeight(e.first,e.second); // Paths through
+}
+
+int compute_priority_maxstr(RoadNetwork *rN, Edge &e) {
+	int dist = dijkstra_dist_del(rN,e.first,e.second);
+	int weight = rN->getEdgeWeight(e.first,e.second);
+	return abs(dist-weight);
+}
+
+int compute_priority_minstr(RoadNetwork *rN, Edge &e) {
+	return INT_MAX-compute_priority_maxstr(rN,e); // Paths through
 }
