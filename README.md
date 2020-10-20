@@ -39,7 +39,7 @@ $ make
 Then, in order to run the run.exec with the sample file:
 
 ```sh
-$ ./run.exec -f sample/sample.gr -k [PATHS] -s [THRESHOLD] -S [SRC] -T [TRG] -a [ALGORITHM]
+$ ./run.exec -f sample/sample.gr -k [PATHS] -t [THRESHOLD] -s [SOURCE] -d [DESTINATION] -a [ALGORITHM]
 ```
 The following table shows the possible values for each parameter.
 
