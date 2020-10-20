@@ -4,7 +4,7 @@ The code in this repository was used in the following publications (please cite)
 
 - Theodoros Chondrogiannis, Panagiotis Bouros, Johann Gamper, Ulf Leser, and David B. Blumenthal, 
 Finding k-shortest paths with limited overlap.
-The VLDB Journal (2020)
+The VLDB Journal 29(5) (2020)
 
 - Theodoros Chondrogiannis, Panagiotis Bouros, Johann Gamper, and Ulf Leser,
 Exact and Approximate Algorithms for Finding k-Shortest Paths with Limited Overlap ,
@@ -25,7 +25,7 @@ The following table illustrates the inplemented algorithms:
 | opplus | The OnePass+ performance-oriented heuristic algorithm |
 | svp | The SVP+ performance-oriented heuristic algorithm |
 | esx | The ESX performance-oriented heuristic algorithm |
-| svpc | The SVP-C completeness-oriented heuristic algorithm |
+| svp-c | The SVP-C completeness-oriented heuristic algorithm |
 | esx-c | The ESX-C completeness-oriented heuristic algorithm |
 
 ## Tests
