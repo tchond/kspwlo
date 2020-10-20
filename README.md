@@ -49,7 +49,7 @@ The following table shows the possible values for each parameter.
 | THRESHOLD | Similarity threshold θ | [0,1] |
 | SOURCE | The source query node | [0,NUM_NODES] |
 | DESTINATION | The target query node | [0,NUM_NODES] |
-| ALGORITHM | The selected algorithm | op\|mp\|opplus\|svpplus\|esx |
+| ALGORITHM | The selected algorithm | op\|mp\|opplus\|svp\|esx\|svp-c\|esx-c |
 
 ## License
 
