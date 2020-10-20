@@ -43,7 +43,7 @@ $ ./run.exec -f sample/sample.gr -k [PATHS] -t [THRESHOLD] -s [SOURCE] -d [DESTI
 ```
 The following table shows the possible values for each parameter.
 
-| Command | Description | Values |
+| Parameter | Description | Values |
 | --- | --- | --- |
 | PATHS | The number of requested result paths k | [0,+inf] |
 | THRESHOLD | Similarity threshold θ | [0,1] |
