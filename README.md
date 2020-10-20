@@ -2,11 +2,15 @@
 
 The code in this repository was used in the following publications (please cite):
 
-- Theodoros Chondrogiannis, Panagiotis Bouros, Johann Gamper and Ulf Leser,
+- Theodoros Chondrogiannis, Panagiotis Bouros, Johann Gamper, Ulf Leser, and David B. Blumenthal, 
+Finding k-shortest paths with limited overlap.
+The VLDB Journal (2020)
+
+- Theodoros Chondrogiannis, Panagiotis Bouros, Johann Gamper, and Ulf Leser,
 Exact and Approximate Algorithms for Finding k-Shortest Paths with Limited Overlap ,
 In Proc. of the 20th Int. Conf. on Extending Database Technology (EDBT) (2017) 
 
-- Theodoros Chondrogiannis, Panagiotis Bouros, Johann Gamper and Ulf Leser,
+- Theodoros Chondrogiannis, Panagiotis Bouros, Johann Gamper, and Ulf Leser,
 Alternative Routing: k-Shortest Paths with Limited Overlap ,
 In Proc. of the 23rd ACM SIGSPATIAL Int. Conf. on Advances in Geographic Information Systems (GIS) (2015)
 
@@ -18,13 +22,15 @@ The following table illustrates the inplemented algorithms:
 | ------ | ------ |
 | op | The OnePass algorithm |
 | mp | The MultiPass algorithm |
-| opplus | The OnePass+ heuristic algorithm |
-| svp | The SVP+ heuristic algorithm |
-| esx | The ESX heuristic algorithm |
+| opplus | The OnePass+ performance-oriented heuristic algorithm |
+| svp | The SVP+ performance-oriented heuristic algorithm |
+| esx | The ESX performance-oriented heuristic algorithm |
+| svpc | The SVP-C completeness-oriented heuristic algorithm |
+| esx-c | The ESX-C completeness-oriented heuristic algorithm |
 
 ## Tests
 
-In order to run the program and test the algorithms you must first compile the source code. In order to compile, simply
+In order to run the program and test the algorithms you must first compile the source code. Before compliling, change the compiler the the paths in the Makefile. Then, in order to compile, simply
 
 ```sh
 $ make
