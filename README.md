@@ -47,8 +47,8 @@ The following table shows the possible values for each parameter.
 | --- | --- | --- |
 | PATHS | The number of requested result paths k | [0,+inf] |
 | THRESHOLD | Similarity threshold θ | [0,1] |
-| SRC | The source query node | [0,NUM_NODES] |
-| TRG | The target query node | [0,NUM_NODES] |
+| SOURCE | The source query node | [0,NUM_NODES] |
+| DESTINATION | The target query node | [0,NUM_NODES] |
 | ALGORITHM | The selected algorithm | op\|mp\|opplus\|svpplus\|esx |
 
 ## License
