@@ -95,9 +95,13 @@ typedef priority_queue<OlLabel*,std::vector<OlLabel*>,AstarComparator2> Priority
 vector<Path> onepass(RoadNetwork *rN, NodeID source, NodeID target, unsigned int k, double theta);
 vector<Path> multipass(RoadNetwork *rN, NodeID source, NodeID target, unsigned int k, double theta);
 
-// Declarations of heuristic algorithms
+// Declarations of performance-oriented heuristic algorithms
 vector<Path> svp_plus(RoadNetwork *rN, NodeID source, NodeID target, unsigned int k, double theta);
 vector<Path> onepass_plus(RoadNetwork *rN, NodeID source, NodeID target, unsigned int k, double theta);
 vector<Path> esx(RoadNetwork *rN, NodeID source, NodeID target, unsigned int k, double theta);
 
+// Declarations of competeness-oriented heuristic algorithms
+pair<vector<Path>,double> completeness_function(RoadNetwork *rN, vector<Path> inputPaths, unsigned int k, double theta);
+pair<vector<Path>,double> esx_complete(RoadNetwork *rN, NodeID source, NodeID target, unsigned int k, double theta);
+pair<vector<Path>,double> svp_plus_complete(RoadNetwork *rN, NodeID source, NodeID target, unsigned int k, double theta);
 #endif
