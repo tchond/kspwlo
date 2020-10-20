@@ -22,21 +22,21 @@ int main(int argc, char **argv) {
     NodeID source = 0, target = 100;
            	   	       	   	
    	int opt = -1;
-	while ((opt = getopt(argc, argv, "f:S:D:k:s:a:")) != -1) {
+	while ((opt = getopt(argc, argv, "f:s:d:k:t:a:")) != -1) {
 		switch(opt) {
 			case 'f':
 				graphFile = string(optarg);
 				break;
-			case 'S':
+			case 's':
 				source = stoi(string(optarg));
 				break;
-			case 'D':
+			case 'd':
 				target = stoi(string(optarg));
 				break;
 			case 'k':
 				k = stoi(string(optarg));
 				break;
-			case 's':
+			case 't':
 				theta = stof(string(optarg));
 				break;
 			case 'a':
@@ -94,11 +94,11 @@ int main(int argc, char **argv) {
     else if(boost::iequals(algo, "esx")) {
     	result = esx(rN,source,target,k,theta);
     }
-    else if(boost::iequals(algo, "svpc")) {
+    else if(boost::iequals(algo, "svp-c")) {
    		completeResult = svp_plus_complete(rN,source,target,k,theta);
    		result = completeResult.first;
    	}
-    else if(boost::iequals(algo, "esxc")) {
+    else if(boost::iequals(algo, "esx-c")) {
    		completeResult = esx_complete(rN,source,target,k,theta);
    		result = completeResult.first;
    	}
