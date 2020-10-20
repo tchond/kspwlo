@@ -88,7 +88,7 @@ int main(int argc, char **argv) {
     else if(boost::iequals(algo, "opplus")) {
     	result = onepass_plus(rN,source,target,k,theta);
     }
-    else if(boost::iequals(algo, "svp")) {
+    else if(boost::iequals(algo, "svpplus")) {
     	result = svp_plus(rN,source,target,k,theta);
     }
     else if(boost::iequals(algo, "esx")) {

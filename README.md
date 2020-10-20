@@ -23,7 +23,7 @@ The following table illustrates the inplemented algorithms:
 | op | The OnePass algorithm |
 | mp | The MultiPass algorithm |
 | opplus | The OnePass+ performance-oriented heuristic algorithm |
-| svp | The SVP+ performance-oriented heuristic algorithm |
+| svpplus | The SVP+ performance-oriented heuristic algorithm |
 | esx | The ESX performance-oriented heuristic algorithm |
 | svp-c | The SVP-C completeness-oriented heuristic algorithm |
 | esx-c | The ESX-C completeness-oriented heuristic algorithm |
@@ -49,7 +49,7 @@ The following table shows the possible values for each parameter.
 | THRESHOLD | Similarity threshold θ | [0,1] |
 | SOURCE | The source query node | [0,NUM_NODES] |
 | DESTINATION | The target query node | [0,NUM_NODES] |
-| ALGORITHM | The selected algorithm | op\|mp\|opplus\|svp\|esx\|svp-c\|esx-c |
+| ALGORITHM | The selected algorithm | op\|mp\|opplus\|svpplus\|esx\|svp-c\|esx-c |
 
 ## License
 
