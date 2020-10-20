@@ -54,4 +54,6 @@ public:
 	double overlap_ratio(RoadNetwork *rN, Path &path2);
 };
 
+bool operator==(const Path& lp, const Path& rp);
+
 #endif  

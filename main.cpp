@@ -66,10 +66,18 @@ int main(int argc, char **argv) {
     	exit(4);
     }
     
+    cout << "[LOG] Network: " << graphFile << endl;
+    cout << "[LOG] Source node: " << source << endl;
+    cout << "[LOG] Target node: " << target << endl;
+    cout << "[LOG] Number of paths k: " << k << endl;
+    cout << "[LOG] Similarity threshold theta: " << theta << endl;
+    cout << "[LOG] Algorithm: " << algo << endl;
+    
     // Loading road network
     rN = new RoadNetwork(graphFile.c_str());
     
     vector<Path> result;
+    pair<vector<Path>,double> completeResult;
 
 	if(boost::iequals(algo, "op")) {
     	result = onepass(rN,source,target,k,theta);
@@ -86,6 +94,14 @@ int main(int argc, char **argv) {
     else if(boost::iequals(algo, "esx")) {
     	result = esx(rN,source,target,k,theta);
     }
+    else if(boost::iequals(algo, "svpc")) {
+   		completeResult = svp_plus_complete(rN,source,target,k,theta);
+   		result = completeResult.first;
+   	}
+    else if(boost::iequals(algo, "esxc")) {
+   		completeResult = esx_complete(rN,source,target,k,theta);
+   		result = completeResult.first;
+   	}
     
     cout << source << "\t" << target << "\t[" << result[0].length;
     for(unsigned int j = 1;j<result.size();j++) {

@@ -61,3 +61,13 @@ double Path::overlap_ratio(RoadNetwork *rN, Path &path2) {
 
     return sharedLength/path2.length;
 }
+
+bool operator==(const Path& lp, const Path& rp) {
+	if(lp.length != rp.length || lp.nodes.size() != rp.nodes.size())
+		return false;
+	for(int i=0;i<lp.nodes.size();i++) {
+		if(lp.nodes[i] != rp.nodes[i])
+			return false;
+	}
+    return true;
+}

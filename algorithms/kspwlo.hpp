@@ -100,8 +100,10 @@ vector<Path> svp_plus(RoadNetwork *rN, NodeID source, NodeID target, unsigned in
 vector<Path> onepass_plus(RoadNetwork *rN, NodeID source, NodeID target, unsigned int k, double theta);
 vector<Path> esx(RoadNetwork *rN, NodeID source, NodeID target, unsigned int k, double theta);
 
-// Declarations of competeness-oriented heuristic algorithms
-pair<vector<Path>,double> completeness_function(RoadNetwork *rN, vector<Path> inputPaths, unsigned int k, double theta);
+// Declarations of completeness-oriented heuristic algorithms
 pair<vector<Path>,double> esx_complete(RoadNetwork *rN, NodeID source, NodeID target, unsigned int k, double theta);
 pair<vector<Path>,double> svp_plus_complete(RoadNetwork *rN, NodeID source, NodeID target, unsigned int k, double theta);
+
+// Supporting function for the completeness-oriented heuristic algorithms
+pair<vector<Path>,double> completeness_function(RoadNetwork *rN, vector<Path> inputPaths, unsigned int k, double theta);
 #endif
