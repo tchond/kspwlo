@@ -331,7 +331,7 @@ int compute_paths_through(RoadNetwork *rN, Edge &e, vector<int> &bounds, unorder
 */
 
 int compute_priority(RoadNetwork *rN, Edge &e, vector<int> &bounds, unordered_set<Edge,boost::hash<Edge>> &deletedEdges) {
-	return compute_paths_through(rN,e,bounds,deletedEdges); // Paths through
+	return compute_priority_minw(rN,e,bounds,deletedEdges); // Paths through
 }
 
 /*
